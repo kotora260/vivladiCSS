@@ -1,0 +1,139 @@
+:root {
+	--browserborder: 10px; /* change this if you want to change border size */
+	--PinnedTab: 40px; /* pinned tabs height */
+	--biggertab: 40px; /* normal tabs height */
+	--lightgradient: linear-gradient(#C9CEE1, #EEB7CA);
+	/* ^^^ Adjust as you want ^^^ */
+}
+
+/* left tab bar */
+#tabs-container {
+	padding: var(--browserborder) var(--browserborder) 0 var(--browserborder);
+}
+.tabbar-wrapper > .tabbar-wrapper {
+	border-top-right-radius: var(--radiusHalf);
+	border-bottom-right-radius: var(--radiusHalf);
+	height: calc(100% - var(--browserborder) + 1px) !important;
+	overflow: hidden;
+	z-index:1;
+}
+#tabs-container > .resize > .tab-strip > .separator,
+#tabs-container > .resize > .tab-strip .tab-yield-space {
+	z-index: 1;
+}
+#tabs-tabbar-container {
+	width: var(--leftbarwidth) !important;
+	padding: 0 !important;
+}
+
+/* button pin tab */
+.tab-position.is-pinned .tab {background-color: rgba(230,234,241,0.15);max-height:var(--PinnedTab);}
+.tab-position span.title {color: var(--colorFg);} 
+.resize {
+	display: grid !important;
+	height: calc(100% - 28px);
+	flex: unset !important;
+	grid-auto-rows: max-content;
+	gap: .5em;
+	.tab-strip,.sync-and-trash-container {display: contents;}
+	.tab-position, .newtab, .separator {transform: unset !important;position: relative;}
+	.tab-position.is-pinned {
+		grid-column: span 1;
+		min-width: 100%;
+		max-width: 100%;
+		height: var(--PinnedTab);
+		.tab-header {
+			justify-content: center;
+			padding: unset;
+			flex-basis: var(--PinnedTab) !important;
+			.title {display: none;}
+		}
+	}
+	.tab-position:not(.is-pinned), .newtab, .separator {grid-column: 1 / -1;min-width: 100%;}
+	grid-template-columns: repeat(3, minmax(var(--biggertab), auto)) !important;  
+	.tab-wrapper {
+		max-height: unset !important;
+		margin: 0 !important;
+	}
+}
+	#tabs-tabbar-container > button,
+	#tabs-container > button {
+		display: none;
+	}
+
+/* bigger tab */
+.tab-position:not(.is-pinned) .tab .tab-header {flex-basis: var(--biggertab) !important;}
+#tabs-container .tab-position:not(.accordion-toggle-arrow):not(.is-pinned) {
+	height: var(--biggertab) !important;
+	.tab {max-height: var(--biggertab) !important;}
+}
+
+/* tab stack indicater */
+.tabs-top .tab-group-indicator, .tabs-left .tab-group-indicator, .tabs-right .tab-group-indicator {
+    top: 0px;
+}
+.tab-indicator {
+    flex: 1 1 100%;
+    height: 0px;
+    border-top: 1px solid transparent;
+    border-bottom: 1px solid transparent;
+	background-clip: unset;
+    position: relative;
+}
+.tab-indicator.active {
+	height: 0px;
+}
+
+/* tab selection */
+.tabs-left .tab:not(.tab-accordion, .tab-in-accordion) .svg-tab-stack, .tabs-left .tab:not(.tab-accordion, .tab-in-accordion) .svg-tab-selection {
+    max-height: var(--biggertab);
+}
+.svg-tab-selection {
+    position: absolute;
+    pointer-events: none;
+    width: var(--Width);
+    height: var(--biggertab);
+    border-radius: var(--currentRadius);
+}
+#app .svg-tab-selection .inner {
+	stroke: none;
+}
+#app .svg-tab-selection .outer {
+	stroke-dasharray: none;
+	stroke: var(--colorHighlightBg);
+}
+#app .svg-tab-selection .stack-frame {
+	stroke: none;
+}
+.tabs-left .tab.tab-group .svg-tab-stack, .tabs-left .tab.tab-group .svg-tab-selection {
+	max-height: 0;
+}
+
+/* Seperator + new tab */
+.sync-and-trash-container {margin: 0 !important;}
+.newtab {
+	left: unset !important;
+	top: unset !important;
+	height: var(--biggertab);
+	button {height: var(--biggertab);}
+	button:after {
+		content: "New Tab";
+		color: var(--colorFg);
+		width: 100%;
+		font-size: 14px;
+	}
+}
+
+/* rubbish bin */
+.button-toolbar.toggle-trash {
+	position: fixed;
+	left: var(--browserborder);
+	bottom: var(--browserborder);
+	button {min-height: 28px !important;}
+}
+.button-toolbar.synced-tabs-button {
+	position: fixed;
+	left: calc(var(--browserborder) + 28px);
+	bottom: var(--browserborder);
+	button {min-height: 28px !important;}
+}

@@ -1,0 +1,86 @@
+:root {
+	--browserborder: 10px; /* change this if you want to change border size */
+	--biggertab: 40px; /* normal tabs height */
+	--lightgradient: linear-gradient(#C9CEE1, #EEB7CA);
+	/* ^^^ Adjust as you want ^^^ */
+}
+
+#tabs-subcontainer {
+	padding: var(--browserborder) var(--browserborder) 0 var(--browserborder);
+}
+#tabs-subcontainer .tab-strip > .resize {
+	display: grid !important;
+	height: calc(100% - 28px);
+	flex: unset !important;
+	grid-auto-rows: max-content;
+	gap: .5em;
+}
+#tabs-subcontainer .tab-strip,
+#tabs-subcontainer .sync-and-trash-container {
+	display: contents;
+}
+#tabs-subcontainer .tab-position,
+#tabs-subcontainer .newtab,
+#tabs-subcontainer .separator {
+	transform: unset !important;
+	position: relative;
+}
+#tabs-subcontainer .tab-header {
+	justify-content: center;
+}
+#tabs-subcontainer .tab-position:not(.is-pinned),
+#tabs-subcontainer .newtab,
+#tabs-subcontainer .separator {
+	grid-column: 1 / -1;
+	min-width: 133px;
+	max-width: 133px;
+}
+#tabs-subcontainer .tab-wrapper {
+	max-height: unset !important;
+	margin: 0 !important;
+}
+#tabs-subcontainer .tab-position:not(.is-pinned) .tab .tab-header {
+	flex-basis: var(--biggertab) !important;
+}
+#tabs-subcontainer .tab-position:not(.accordion-toggle-arrow):not(.is-pinned) {
+	height: var(--biggertab) !important;
+}
+#tabs-subcontainer .tab-position:not(.accordion-toggle-arrow):not(.is-pinned) .tab {
+	max-height: var(--biggertab) !important;
+}
+
+#tabs-subcontainer {
+	display: grid !important;
+	height: calc(100% - 28px);
+	flex: unset !important;
+	grid-auto-rows: max-content;
+	gap: .5em;
+	.tab-strip,.sync-and-trash-container {display: contents;}
+	.tab-position, .newtab, .separator {transform: unset !important;position: relative;}
+	.tab-position.is-pinned {
+		grid-column: span 1;
+		min-width: 100%;
+		max-width: 100%;
+		height: var(--PinnedTab);
+		.tab-header {
+			justify-content: center;
+			padding: unset;
+			flex-basis: var(--PinnedTab) !important;
+			.title {display: none;}
+		}
+	}
+	.tab-position:not(.is-pinned), .newtab, .separator {grid-column: 1 / -1;min-width: 100%;}
+	grid-template-columns: repeat(3, minmax(var(--biggertab), auto)) !important;  
+	.tab-wrapper {
+		max-height: unset !important;
+		margin: 0 !important;
+	}
+}
+
+#browser:not(.alt-tabs) #tabs-subcontainer .tab:not(.tab-mini) .close {
+	margin-right: 0px;
+}
+
+.subcontainer-lock {
+	justify-content: left;
+}
