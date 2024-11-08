@@ -109,6 +109,14 @@
 	max-height: 0;
 }
 
+/* audio icon */
+#browser:not(.alt-tabs) #tabs-container .tab-audio {
+	top: auto;
+	min-width: 18px;
+	height: 18px;
+	margin-left: 2px;
+}
+
 /* Seperator + new tab */
 .sync-and-trash-container {margin: 0 !important;}
 .newtab {
