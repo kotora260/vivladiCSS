@@ -563,3 +563,12 @@ vivaldi version: v6.6 - v6.9
 button.button-startpage { box-shadow: none !important; }
 button.button-startpage:after { background-image: none !important; }
 button.button-startpage:active { background: none !important; }
+
+/*page zoom bar*/
+#switch > .toolbar.toolbar-vertical .button-toolbar > button {
+    width: auto;
+    height: 34px
+}
+#switch > .toolbar.toolbar-vertical .page-zoom-controls {
+    width: 200px;
+}
