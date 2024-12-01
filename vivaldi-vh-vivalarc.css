@@ -586,7 +586,6 @@
   box-sizing: border-box;
   grid-template-columns: repeat(auto-fit, minmax(34px, 1fr));
   justify-content: space-between;
-  align-items: start;
 }
 :root:has(#browser:is(.tabs-left, .tabs-right):not(.fullscreen, .minimal-ui), #browser.tabs-off:not(.fullscreen, .minimal-ui) #panels-container:not(.switcher)) .toolbar-extensions:has(button[name=Extensions]) {
   grid-template-columns: repeat(auto-fit, minmax(34px, 1fr)) 34px;
@@ -597,7 +596,6 @@
   height: 100%;
 }
 :root:has(#browser:is(.tabs-left, .tabs-right):not(.fullscreen, .minimal-ui), #browser.tabs-off:not(.fullscreen, .minimal-ui) #panels-container:not(.switcher)) .toolbar-extensions > .button-toolbar > button[name=Extensions] {
-  height: 100%;
   display: flex;
   align-items: center;
 }
